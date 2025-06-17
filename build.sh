@@ -27,10 +27,7 @@ args=(-j$(nproc --all)
 make ${args[@]} mrproper
 
 #定义默认配置
-make ${args[@]} gauguin_user_defconfig
-
-#自定义配置
-make ${args[@]} menuconfig
+make ${args[@]} gauguin_kali_defconfig
 
 #开始编译
 make ${args[@]}

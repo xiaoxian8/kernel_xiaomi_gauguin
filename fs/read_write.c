@@ -438,7 +438,7 @@ EXPORT_SYMBOL(kernel_read);
 extern bool ksu_vfs_read_hook __read_mostly;
 extern int ksu_handle_vfs_read(struct file **file_ptr, char __user **buf_ptr,
 	size_t *count_ptr, loff_t **pos);
-#endi
+#endif
 
 ssize_t vfs_read(struct file *file, char __user *buf, size_t count, loff_t *pos)
 {

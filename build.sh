@@ -21,8 +21,7 @@ args=(-j$(nproc --all)
 	STRIP=llvm-strip
 	DEPMOD=$PWD/../envpath/build/build-tools/path/linux-x86/depmod
 	DTC_EXT=$PWD/../envpath/build/build-tools/path/linux-x86/dtc
-	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay
-	CONFIG_KALLSYMS_ALL=y)
+	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay)
 
 #清理旧的构建
 make ${args[@]} mrproper

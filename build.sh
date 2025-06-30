@@ -4,7 +4,7 @@
 source $PWD/../envpath/envset.sh
 
 #LLVM环境变量
-export PATH=$PWD/../envpath/prebuilts-master/clang/clang-r416183b/bin:$PATH
+export PATH=$PWD/../envpath/prebuilts-master/clang/host/linux-x86/clang-r416183b/bin:$PATH
 
 #编译参数
 args=(-j$(nproc --all) 

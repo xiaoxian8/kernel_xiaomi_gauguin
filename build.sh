@@ -4,7 +4,7 @@
 source $PWD/../envpath/envset.sh
 
 #LLVM环境变量
-export PATH=$PWD/../envpath/prebuilts-master/clang/host/linux-x86/clang-r416183b/bin:$PATH
+export PATH=$PWD/../envpath/prebuilts-master/clang/clang-r416183b/bin:$PATH
 
 #编译参数
 args=(-j$(nproc --all) 
@@ -21,7 +21,8 @@ args=(-j$(nproc --all)
 	STRIP=llvm-strip
 	DEPMOD=$PWD/../envpath/build/build-tools/path/linux-x86/depmod
 	DTC_EXT=$PWD/../envpath/build/build-tools/path/linux-x86/dtc
-	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay)
+	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay
+	CONFIG_KALLSYMS_ALL=y)
 
 #清理旧的构建
 make ${args[@]} mrproper

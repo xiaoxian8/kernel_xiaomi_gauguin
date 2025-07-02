@@ -27,7 +27,7 @@ make ${args[@]} mrproper
 
 #定义默认配置
 make ${args[@]} gauguin_kali_defconfig
-make ${args[@]} menuconfig
+#make ${args[@]} menuconfig
 
 #开始编译
 make ${args[@]}

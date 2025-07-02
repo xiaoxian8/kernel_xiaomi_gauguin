@@ -23,10 +23,10 @@ args=(-j$(nproc --all)
 	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay)
 
 #清理旧的构建
-#make ${args[@]} mrproper
+make ${args[@]} mrproper
 
 #定义默认配置
-#make ${args[@]} gauguin_kali_defconfig
+make ${args[@]} gauguin_kali_defconfig
 make ${args[@]} menuconfig
 
 #开始编译

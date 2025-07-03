@@ -52,3 +52,4 @@ cat $(find out/arch/arm64/boot/dts/vendor/qcom/ -type f -name "*.dtb") > AnyKern
 #打包成 flashable zip
 cd AnyKernel3
 zip -r9v ../out/kernel.zip *
+rm Image dtbo.img dtb

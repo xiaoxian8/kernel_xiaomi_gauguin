@@ -35,7 +35,7 @@ make ${args[@]}
 #生成modules_install
 make ${args[@]} INSTALL_MOD_PATH=modules modules_install
 
-# 拷贝 Image 和 dtbo.img 到当前目录（可选）
+# 拷贝 Image 和 dtbo.img 到当前目录
 cp $(find out -type f \( -name "Image" -o -name "dtbo.img" \)) ./
 
 #应用补丁

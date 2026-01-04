@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-#环境变量
-source $PWD/../envpath/envset.sh
-
 #LLVM环境变量
-export PATH=$PWD/../envpath/prebuilts-master/clang/host/linux-x86/clang-r416183b/bin:$PATH
+export PATH=$PWD/../llvm20/bin:$PATH
 
 #编译参数
 args=(-j$(nproc --all) 
@@ -38,11 +35,8 @@ make ${args[@]} INSTALL_MOD_PATH=modules modules_install
 # 拷贝 Image 和 dtbo.img 到当前目录
 cp $(find out -type f \( -name "Image" -o -name "dtbo.img" \)) ./
 
-#应用补丁
-./kpm_patch/patch_linux
-
 #移动到 Anykernel3
-mv -v oImage AnyKernel3/Image
+mv -v Image AnyKernel3/Image
 mv -v dtbo.img AnyKernel3/dtbo.img
 rm Image
 

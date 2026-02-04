@@ -21,6 +21,7 @@ args=(-j4
 	HOSTLD=ld.lld
 	DTC=dtc
 	DEPMOD=depmod)
+	
 #清理旧的构建
 make ${args[@]} mrproper
 

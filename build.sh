@@ -1,24 +1,26 @@
 #!/usr/bin/env bash
 
 #LLVM环境变量
-export PATH=$PWD/../llvm20/bin:$PATH
+export PATH=$PWD/llvm20/bin:$PATH
 
 #编译参数
-args=(-j$(nproc --all) 
+args=(-j4
 	O=out
 	ARCH=arm64
-	CLANG_TRIPLE=aarch64-linux-gnu-
-	CROSS_COMPILE=aarch64-linux-gnu-
-	CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
 	CC=clang
+	LD=ld.lld
 	AR=llvm-ar
 	NM=llvm-nm
+	STRIP=llvm-strip
 	OBJCOPY=llvm-objcopy
 	OBJDUMP=llvm-objdump
-	STRIP=llvm-strip
-	DTC_EXT=$PWD/../envpath/build/build-tools/path/linux-x86/dtc
-	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay)
-
+	READELF=llvm-readelf
+	HOSTCC=clang
+	HOSTCXX=clang++
+	HOSTAR=llvm-ar
+	HOSTLD=ld.lld
+	DTC=dtc
+	DEPMOD=depmod)
 #清理旧的构建
 make ${args[@]} mrproper
 

@@ -5,18 +5,13 @@ export PATH=$PWD/llvm12/bin:$PATH
 curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
 
 #编译参数
-args=(-j4
+args=(-j$(nproc --all)
 	O=out
 	ARCH=arm64
-	CLANG_TRIPLE=aarch64-linux-gnu-
 	CROSS_COMPILE=aarch64-linux-gnu-
 	CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
-	CC=clang
-	AR=llvm-ar
-	NM=llvm-nm
-	STRIP=llvm-strip
-	OBJCOPY=llvm-objcopy
-	OBJDUMP=llvm-objdump
+	LLVM=1 
+	LLVM_IAS=1
 	DTC_EXT=dtc
 	DEPMOD=depmod
 	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay)
@@ -31,7 +26,7 @@ make ${args[@]} Image.gz dtbo.img modules
 make ${args[@]} INSTALL_MOD_PATH=modules modules_install
 
 # 拷贝 Image 和 dtbo.img 到当前目录
-cp $(find out -type f \( -name "Image.gz-dtb" -o -name "dtbo.img" \)) ./
+# cp $(find out -type f \( -name "Image.gz-dtb" -o -name "dtbo.img" \)) ./
 
 #移动到 Anykernel3
 mv -v Image.gz-dtb AnyKernel3/Image.gz-dtb

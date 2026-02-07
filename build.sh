@@ -10,11 +10,17 @@ args=(-j$(nproc --all)
 	ARCH=arm64
 	CROSS_COMPILE=aarch64-linux-gnu-
 	CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
-	LLVM=1 
-	LLVM_IAS=1
-	DTC_EXT=dtc
-	DEPMOD=depmod
-	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay)
+	LD=ld.lld
+	AR=llvm-ar
+	NM=llvm-nm
+	STRIP=llvm-strip
+	OBJCOPY=llvm-objcopy
+	OBJDUMP=llvm-objdump
+	READELF=llvm-readelf
+	HOSTCC=clang
+	HOSTCXX=clang++
+	HOSTAR=llvm-ar
+	HOSTLD=ld.lld)
 
 #定义默认配置
 make ${args[@]} gauguin_kali_defconfig

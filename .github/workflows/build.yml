@@ -1,1 +1,28 @@
+name: 内核构建
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检查储存库
+        uses: actions/checkout@v4
+
+      - name: 下载llvm
+        run: |
+          git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 -b clang-r416183b --depth=1 llvm12
+
+      - name: 添加KernelSU Next
+        run: |
+          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
+
+      - name: 执行build.sh
+        run: |
+          chmod +x build.sh
+          ./build.sh
+
+      - name: 上传AnyKernel3刷机包
+        uses: actions/upload-artifact@v4
+        with:
+         name: kernel-zip
+         path: out/kernel.zip

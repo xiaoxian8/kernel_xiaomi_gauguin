@@ -25,16 +25,16 @@ args=(-j$(nproc --all)
 make ${args[@]} gauguin_kali_defconfig
 
 #开始编译
-make ${args[@]} Image-dtb dtbo.img modules
+make ${args[@]} Image dtbo.img modules
 
 #生成modules_install
 make ${args[@]} INSTALL_MOD_PATH=modules modules_install
 
 # 拷贝 Image 和 dtbo.img 到当前目录
-cp $(find out -type f \( -name "Image-dtb" -o -name "dtbo.img" \)) ./
+cp $(find out -type f \( -name "Image" -o -name "dtbo.img" \)) ./
 
 #移动到 Anykernel3
-mv -v Image-dtb AnyKernel3/Image-dtb
+mv -v Image AnyKernel3/Image
 mv -v dtbo.img AnyKernel3/dtbo.img
 
 #合成DTB

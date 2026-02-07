@@ -2,6 +2,7 @@
 
 #LLVM环境变量
 export PATH=$PWD/llvm12/bin:$PATH
+curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
 
 #编译参数
 args=(-j4

@@ -36,7 +36,7 @@ make ${args[@]} Image.gz-dtb dtbo.img modules
 make ${args[@]} INSTALL_MOD_PATH=modules modules_install
 
 # 拷贝 Image 和 dtbo.img 到当前目录
-# cp $(find out -type f \( -name "Image.gz-dtb" -o -name "dtbo.img" \)) ./
+cp $(find out -type f \( -name "Image.gz-dtb" -o -name "dtbo.img" \)) ./
 
 #移动到 Anykernel3
 mv -v Image.gz-dtb AnyKernel3/Image.gz-dtb

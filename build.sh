@@ -18,11 +18,6 @@ args=(-j$(nproc --all)
 	STRIP=llvm-strip
 	OBJCOPY=llvm-objcopy
 	OBJDUMP=llvm-objdump
-	READELF=llvm-readelf
-	HOSTCC=clang
-	HOSTCXX=clang++
-	HOSTAR=llvm-ar
-	HOSTLD=ld.lld
 	DEPMOD=depmod
 	DTC_EXT=/usr/bin/dtc)
 

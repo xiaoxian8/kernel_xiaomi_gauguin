@@ -23,10 +23,6 @@ jobs:
           tar -zxf clang-r416183b.tar.gz
           cd ..
           
-      - name: 添加KernelSU Next
-        run: |
-          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
-
       - name: 执行build.sh
         run: |
           chmod +x build.sh

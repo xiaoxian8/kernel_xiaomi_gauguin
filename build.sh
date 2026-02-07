@@ -20,13 +20,15 @@ args=(-j$(nproc --all)
 	HOSTCC=clang
 	HOSTCXX=clang++
 	HOSTAR=llvm-ar
-	HOSTLD=ld.lld)
+	HOSTLD=ld.lld
+	DEPMOD=depmod
+	DTC_EXT=/usr/bin/dtc)
 
 #定义默认配置
 make ${args[@]} gauguin_kali_defconfig
 
 #开始编译
-make ${args[@]} Image.gz dtbo.img modules
+make ${args[@]} Image.gz-dtb dtbo.img modules
 
 #生成modules_install
 make ${args[@]} INSTALL_MOD_PATH=modules modules_install

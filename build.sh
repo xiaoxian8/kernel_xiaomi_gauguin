@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #LLVM环境变量
-export PATH=$PWD/../llvm14/bin:$PATH
+export PATH=$PWD/llvm12/bin:$PATH
 
 #编译参数
 args=(-j4

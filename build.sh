@@ -7,20 +7,19 @@ export PATH=$PWD/../llvm14/bin:$PATH
 args=(-j4
 	O=out
 	ARCH=arm64
+	CLANG_TRIPLE=aarch64-linux-gnu-
+	CROSS_COMPILE=aarch64-linux-gnu-
+	CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
 	CC=clang
-	LD=ld.lld
 	AR=llvm-ar
 	NM=llvm-nm
 	STRIP=llvm-strip
 	OBJCOPY=llvm-objcopy
 	OBJDUMP=llvm-objdump
 	READELF=llvm-readelf
-	HOSTCC=clang
-	HOSTCXX=clang++
-	HOSTAR=llvm-ar
-	HOSTLD=ld.lld
 	DTC=dtc
-	DEPMOD=depmod)
+	DEPMOD=depmod
+	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay)
 	
 #清理旧的构建
 make ${args[@]} mrproper

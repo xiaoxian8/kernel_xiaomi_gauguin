@@ -38,7 +38,7 @@ mv -v Image AnyKernel3/Image
 mv -v dtbo.img AnyKernel3/dtbo.img
 
 #合成DTB
-#cat $(find out/arch/arm64/boot/dts/vendor/qcom/ -type f -name "*.dtb") > AnyKernel3/dtb
+cat $(find out/arch/arm64/boot/dts/vendor/qcom/ -type f -name "*.dtb") > AnyKernel3/dtb
 
 #打包成 flashable zip
 cd AnyKernel3

@@ -16,8 +16,7 @@ args=(-j4
 	STRIP=llvm-strip
 	OBJCOPY=llvm-objcopy
 	OBJDUMP=llvm-objdump
-	READELF=llvm-readelf
-	DTC=dtc
+	DTC_EXT=dtc
 	DEPMOD=depmod
 	DTC_OVERLAY_TEST_EXT=ufdt_apply_overlay)
 

@@ -25,20 +25,20 @@ args=(-j4
 make ${args[@]} gauguin_kali_defconfig
 
 #开始编译
-make ${args[@]} Image.gz-dtb dtbo.img
+make ${args[@]}p
 
 #生成modules_install
 make ${args[@]} INSTALL_MOD_PATH=modules modules_install
 
 # 拷贝 Image 和 dtbo.img 到当前目录
-cp $(find out -type f \( -name "Image.gz-dtb" -o -name "dtbo.img" \)) ./
+cp $(find out -type f \( -name "Image" -o -name "dtbo.img" \)) ./
 
 #移动到 Anykernel3
-mv -v Image.gz-dtb AnyKernel3/Image.gz-dtb
+mv -v Image AnyKernel3/Image
 mv -v dtbo.img AnyKernel3/dtbo.img
 
 #合成DTB
-#cat $(find out/arch/arm64/boot/dts/vendor/qcom/ -type f -name "*.dtb") > AnyKernel3/dtb
+cat $(find out/arch/arm64/boot/dts/vendor/qcom/ -type f -name "*.dtb") > AnyKernel3/dtb
 
 #打包成 flashable zip
 cd AnyKernel3

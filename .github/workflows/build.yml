@@ -1,4 +1,8 @@
-name: 内核构建
+name: build kernel
+
+on:
+  workflow_dispatch:
+  
 
 jobs:
   build:

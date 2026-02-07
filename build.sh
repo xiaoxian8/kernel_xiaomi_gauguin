@@ -8,6 +8,7 @@ curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/ke
 args=(-j$(nproc --all)
 	O=out
 	ARCH=arm64
+	CLANG_TRIPLE=aarch64-linux-gnu-
 	CROSS_COMPILE=aarch64-linux-gnu-
 	CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
 	LD=ld.lld

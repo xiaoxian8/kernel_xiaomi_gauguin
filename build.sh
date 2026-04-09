@@ -49,9 +49,6 @@ git checkout --ours .
 curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy_susfs
 wget https://raw.githubusercontent.com/JackA1ltman/NonGKI_Kernel_Build_2nd/refs/heads/mainline/Patches/Patch/susfs_patch_to_4.19.patch
 patch -p1 -F3 < susfs_patch_to_4.19.patch
-git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android12-5.10 --depth=1
-cp susfs4ksu/kernel_patches/fs ./ -r
-cp susfs4ksu/kernel_patches/include ./ -r
 
 #定义默认配置
 make ${args[@]} gauguin_kali_defconfig

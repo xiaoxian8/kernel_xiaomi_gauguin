@@ -12,6 +12,7 @@ args=(-j$(nproc --all)
 	CROSS_COMPILE=aarch64-linux-gnu-
 	CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
 	CC=clang
+	LD=ld.lld
 	AR=llvm-ar
 	NM=llvm-nm
 	STRIP=llvm-strip

@@ -20,7 +20,8 @@ jobs:
         run: |
           wget https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang+llvm-14.0.6-x86_64-linux-gnu-rhel-8.4.tar.xz
           tar -xf clang+llvm-14.0.6-x86_64-linux-gnu-rhel-8.4.tar.xz
-          mv clang+llvm-14.0.6-x86_64-linux-gnu-rhel-8.4.tar.xz llvm14
+          mv clang+llvm-14.0.6-x86_64-linux-gnu-rhel-8.4 llvm14
+          
       - name: 执行build.sh
         run: |
           chmod +x build.sh

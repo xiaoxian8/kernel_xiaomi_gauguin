@@ -18,11 +18,9 @@ jobs:
 
       - name: 下载llvm
         run: |
-          mkdir llvm12 && cd llvm12
-          wget -q https://android.googlesource.com/platform//prebuilts/clang/host/linux-x86/+archive/b669748458572622ed716407611633c5415da25c/clang-r416183b.tar.gz
-          tar -zxf clang-r416183b.tar.gz
-          cd ..
-          
+          wget https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang+llvm-14.0.6-x86_64-linux-gnu-rhel-8.4.tar.xz
+          tar -xf clang+llvm-14.0.6-x86_64-linux-gnu-rhel-8.4.tar.xz
+          mv clang+llvm-14.0.6-x86_64-linux-gnu-rhel-8.4.tar.xz llvm14
       - name: 执行build.sh
         run: |
           chmod +x build.sh

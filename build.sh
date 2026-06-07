@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 #LLVM环境变量
-export PATH=$PWD/llvm12/bin:$PATH
+export PATH=$PWD/llvm14/bin:$PATH
 curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
 
 #编译参数

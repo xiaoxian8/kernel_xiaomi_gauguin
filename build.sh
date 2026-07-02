@@ -2,9 +2,8 @@
 set -euo pipefail
 #LLVM环境变量
 export PATH=$PWD/llvm14/bin:$PATH
-curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
-
-patch -p1 < scope_min_manual_hooks_next.patch
+curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
+patch -p1 < kernel-4.19_5.4.patch
 
 #编译参数
 args=(-j$(nproc --all)

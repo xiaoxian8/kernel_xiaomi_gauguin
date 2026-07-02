@@ -4,6 +4,8 @@ set -euo pipefail
 export PATH=$PWD/llvm14/bin:$PATH
 curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
 
+patch -p1 < scope_min_manual_hooks_next.patch
+
 #编译参数
 args=(-j$(nproc --all)
 	O=out

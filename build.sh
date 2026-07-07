@@ -2,6 +2,7 @@
 set -euo pipefail
 #LLVM环境变量
 export PATH=$PWD/llvm14/bin:$PATH
+wget https://raw.githubusercontent.com/rksuorg/kernel_patches/refs/heads/master/manual_hook/kernel-4.19_5.4.patch
 curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
 patch -p1 < kernel-4.19_5.4.patch
 

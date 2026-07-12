@@ -6,7 +6,7 @@ git clone https://github.com/sidex15/KernelSU-Next.git -b legacy-susfs-v2
 curl -LSs "https://raw.githubusercontent.com/sidex15/KernelSU-Next/refs/heads/legacy-susfs-v2/kernel/setup.sh" | bash -s legacy-susfs-v2
 git clone https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd.git --depth=1 
 
-patch -p1 -F3 < NonGKI_Kernel_Build_2n/Patches/Patch/susfs_patch_to_4.19.patch
+patch -p1 -F3 < NonGKI_Kernel_Build_2nd/Patches/Patch/susfs_patch_to_4.19.patch
 patch -p1 < scope_min_manual_hooks_next.patch
 patch -p1 -d Kernelsu-Next < next_susfs.patch
 patch -p1 < fix_susfs.patch

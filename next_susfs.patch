@@ -1,0 +1,50 @@
+diff --git a/kernel/hook/setuid_hook.c b/kernel/hook/setuid_hook.c
+index 466d0cc8..f968d9e1 100644
+--- a/kernel/hook/setuid_hook.c
++++ b/kernel/hook/setuid_hook.c
+@@ -83,9 +83,11 @@ static void ksu_handle_extra_susfs_work(void)
+         pr_err("susfs: Failed adding task_work 'susfs_handle_setuid_tw', err: %d\n", err);
+     }
+ }
++/*
+ #ifdef CONFIG_KSU_SUSFS_TRY_UMOUNT
+ extern void susfs_try_umount(uid_t uid);
+ #endif // #ifdef CONFIG_KSU_SUSFS_TRY_UMOUNT
++*/
+ #endif // #ifdef CONFIG_KSU_SUSFS
+ 
+ static void ksu_install_manager_fd_tw_func(struct callback_head *cb)
+@@ -174,12 +176,13 @@ int ksu_handle_setresuid(uid_t ruid, uid_t euid, uid_t suid)
+ 
+ do_umount:
+     // Handle kernel umount
++/*
+ #ifndef CONFIG_KSU_SUSFS_TRY_UMOUNT
+     ksu_handle_umount(old_uid, new_uid);
+ #else
+     susfs_try_umount(new_uid);
+ #endif // #ifndef CONFIG_KSU_SUSFS_TRY_UMOUNT
+-
++*/
+ #ifdef CONFIG_KSU_SUSFS_SUS_PATH
+     //susfs_run_sus_path_loop(new_uid);
+ #endif // #ifdef CONFIG_KSU_SUSFS_SUS_PATH
+diff --git a/kernel/supercall/supercall.c b/kernel/supercall/supercall.c
+index 612eec17..f5bc1d2c 100644
+--- a/kernel/supercall/supercall.c
++++ b/kernel/supercall/supercall.c
+@@ -117,12 +117,14 @@ int ksu_handle_sys_reboot(int magic1, int magic2, unsigned int cmd,
+             return 0;
+         }
+ #endif //#ifdef CONFIG_KSU_SUSFS_SUS_KSTAT
++/*
+ #ifdef CONFIG_KSU_SUSFS_TRY_UMOUNT
+         if (cmd == CMD_SUSFS_ADD_TRY_UMOUNT) {
+             susfs_add_try_umount(arg);
+             return 0;
+         }
+ #endif //#ifdef CONFIG_KSU_SUSFS_TRY_UMOUNT
++*/
+ #ifdef CONFIG_KSU_SUSFS_SPOOF_UNAME
+         if (cmd == CMD_SUSFS_SET_UNAME) {
+             susfs_set_uname(arg);

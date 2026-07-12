@@ -2,9 +2,14 @@
 set -euo pipefail
 #LLVM环境变量
 export PATH=$PWD/llvm14/bin:$PATH
-wget https://raw.githubusercontent.com/rksuorg/kernel_patches/refs/heads/master/manual_hook/kernel-4.19_5.4.patch
-curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
-patch -p1 < kernel-4.19_5.4.patch
+git clone https://github.com/sidex15/KernelSU-Next.git -b legacy-susfs-v2
+curl -LSs "https://raw.githubusercontent.com/sidex15/KernelSU-Next/refs/heads/legacy-susfs-v2/kernel/setup.sh" | bash -s legacy-susfs-v2
+git clone https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd.git --depth=1 
+
+patch -p1 -F3 < NonGKI_Kernel_Build_2n/Patches/Patch/susfs_patch_to_4.19.patch
+patch -p1 < scope_min_manual_hooks_next.patch
+patch -p1 -d Kernelsu-Next < next_susfs.patch
+patch -p1 < fix_susfs.patch
 
 #编译参数
 args=(-j$(nproc --all)

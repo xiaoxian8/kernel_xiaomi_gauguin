@@ -1,0 +1,14 @@
+diff --git a/fs/open.c b/fs/open.c
+index 05036d819..6ca507177 100644
+--- a/fs/open.c
++++ b/fs/open.c
+@@ -31,6 +31,9 @@
+ #include <linux/ima.h>
+ #include <linux/dnotify.h>
+ #include <linux/compat.h>
++#ifdef CONFIG_KSU_SUSFS
++#include <linux/susfs_def.h>
++#endif
+ 
+ #include "internal.h"
+ 

@@ -10,8 +10,8 @@ patch -p1 -F3 < NonGKI_Kernel_Build_2nd/Patches/Patch/susfs_patch_to_4.19.patch
 patch -p1 < scope_min_manual_hooks_next.patch
 patch -p1 -d KernelSU-Next < next_susfs.patch
 patch -p1 < fix_susfs.patch
-patch -p1 -F3 < NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_kernel_panic_in_xt_qtaguid.cocci
-patch -p1 -F3 < NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_restore_cgroup_file_prefix_handling.cocci
+spatch --in-place NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_restore_cgroup_file_prefix_handling.cocci kernel/cgroup/cgroup.c
+spatch --in-place spatch --in-place NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_kernel_panic_in_xt_qtaguid.cocci net/netfilter/xt_qtaguid.c
 
 ./scripts/kconfig/merge_config.sh -m  \
       arch/arm64/configs/gauguin_kali_defconfig \

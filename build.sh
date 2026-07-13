@@ -11,6 +11,10 @@ patch -p1 < scope_min_manual_hooks_next.patch
 patch -p1 -d KernelSU-Next < next_susfs.patch
 patch -p1 < fix_susfs.patch
 
+./scripts/kconfig/merge_config.sh -m  \
+      arch/arm64/configs/gauguin_kali_defconfig \
+	  NonGKI_Kernel_Build_2nd/Patches/Droidspaces/droidspaces.config
+mv .config arch/arm64/configs/gauguin_droid_defconfig
 #编译参数
 args=(-j$(nproc --all)
 	O=out
@@ -29,7 +33,7 @@ args=(-j$(nproc --all)
 	DTC_EXT=/usr/bin/dtc)
 
 #定义默认配置
-make ${args[@]} gauguin_kali_defconfig
+make ${args[@]} gauguin_droid_defconfig
 
 #开始编译
 make ${args[@]} Image dtbo.img all

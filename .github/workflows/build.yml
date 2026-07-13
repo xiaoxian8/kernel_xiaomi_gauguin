@@ -14,7 +14,7 @@ jobs:
 
       - name: 安装依赖
         run: |
-          sudo apt update && sudo apt-get install -y curl bison flex make binutils dwarves git lld pahole zip perl gcc python3 python-is-python3 bc libssl-dev libelf-dev device-tree-compiler kmod binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi
+          sudo apt update && sudo apt-get install -y curl bison flex make binutils dwarves git lld pahole zip perl gcc python3 python-is-python3 bc libssl-dev libelf-dev device-tree-compiler kmod binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi coccinelle
 
       - name: 下载llvm
         run: |

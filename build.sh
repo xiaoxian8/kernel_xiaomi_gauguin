@@ -2,8 +2,8 @@
 set -euo pipefail
 #LLVM环境变量
 export PATH=$PWD/llvm14/bin:$PATH
-git clone https://github.com/omrxm18/KernelSU-Next.git -b legacy-susfs-v2
-curl -LSs "https://raw.githubusercontent.com/sidex15/KernelSU-Next/refs/heads/legacy-susfs-v2/kernel/setup.sh" | bash -s legacy-susfs-v2
+git clone https://github.com/omrxm18/KernelSU-Next.git -b legacy-susfs
+curl -LSs "https://raw.githubusercontent.com/sidex15/KernelSU-Next/refs/heads/legacy-susfs-v2/kernel/setup.sh" | bash -s legacy-susfs
 git clone https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd.git --depth=1 
 
 patch -p1 -F3 < NonGKI_Kernel_Build_2nd/Patches/Patch/susfs_patch_to_4.19.patch

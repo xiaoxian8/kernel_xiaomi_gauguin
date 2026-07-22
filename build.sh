@@ -2,14 +2,14 @@
 set -euo pipefail
 #LLVM环境变量
 export PATH=$PWD/llvm14/bin:$PATH
-git clone https://github.com/omrxm18/KernelSU-Next.git -b legacy-susfs
-curl -LSs "https://raw.githubusercontent.com/sidex15/KernelSU-Next/refs/heads/legacy-susfs-v2/kernel/setup.sh" | bash -s legacy-susfs
+git clone https://github.com/omrxm18/KernelSU-Next.git -b legacy
+curl -LSs "https://raw.githubusercontent.com/sidex15/KernelSU-Next/refs/heads/legacy-susfs-v2/kernel/setup.sh" | bash -s legacy
 git clone https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd.git --depth=1 
 
-patch -p1 -F3 < NonGKI_Kernel_Build_2nd/Patches/Patch/susfs_patch_to_4.19.patch
+#patch -p1 -F3 < NonGKI_Kernel_Build_2nd/Patches/Patch/susfs_patch_to_4.19.patch
 patch -p1 < scope_min_manual_hooks_next.patch
-patch -p1 -d KernelSU-Next < next_susfs.patch
-patch -p1 < fix_susfs.patch
+#patch -p1 -d KernelSU-Next < next_susfs.patch
+#ppatch -p1 < fix_susfs.patch
 spatch --in-place NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_restore_cgroup_file_prefix_handling.cocci kernel/cgroup/cgroup.c
 spatch --in-place NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_kernel_panic_in_xt_qtaguid.cocci net/netfilter/xt_qtaguid.c
 

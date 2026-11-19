@@ -9,13 +9,13 @@ curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/ke
 patch -p1 < scope_min_manual_hooks_next.patch
 #patch -p1 -d KernelSU-Next < next_susfs.patch
 #ppatch -p1 < fix_susfs.patch
-spatch --in-place NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_restore_cgroup_file_prefix_handling.cocci kernel/cgroup/cgroup.c
-spatch --in-place NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_kernel_panic_in_xt_qtaguid.cocci net/netfilter/xt_qtaguid.c
+#spatch --in-place NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_restore_cgroup_file_prefix_handling.cocci kernel/cgroup/cgroup.c
+#spatch --in-place NonGKI_Kernel_Build_2nd/Patches/Droidspaces/fix_kernel_panic_in_xt_qtaguid.cocci net/netfilter/xt_qtaguid.c
 
-./scripts/kconfig/merge_config.sh -m  \
-      arch/arm64/configs/gauguin_kali_defconfig \
-	  NonGKI_Kernel_Build_2nd/Patches/Droidspaces/droidspaces.config
-mv .config arch/arm64/configs/gauguin_droid_defconfig
+#./scripts/kconfig/merge_config.sh -m  \
+#      arch/arm64/configs/gauguin_kali_defconfig \
+#	  NonGKI_Kernel_Build_2nd/Patches/Droidspaces/droidspaces.config
+#mv .config arch/arm64/configs/gauguin_droid_defconfig
 #编译参数
 args=(-j$(nproc --all)
 	O=out
@@ -34,7 +34,7 @@ args=(-j$(nproc --all)
 	DTC_EXT=/usr/bin/dtc)
 
 #定义默认配置
-make ${args[@]} gauguin_droid_defconfig
+make ${args[@]} gauguin_kali_defconfig
 
 #开始编译
 make ${args[@]} Image dtbo.img all
